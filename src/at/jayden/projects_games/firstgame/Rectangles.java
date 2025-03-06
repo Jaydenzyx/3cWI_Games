@@ -1,7 +1,6 @@
-package at.jayden.games.firstgame;
+package at.jayden.projects_games.firstgame;
 
 import org.newdawn.slick.*;
-import org.newdawn.slick.tests.AnimationTest;
 
 public class Rectangles extends BasicGame {
     public Rectangles(String title) {
