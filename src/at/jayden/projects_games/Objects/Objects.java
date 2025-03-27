@@ -53,6 +53,11 @@ public class Objects extends BasicGame {
     }
 
     @Override
+    public void keyPressed(int key, char c) {
+        System.out.println("pressed");
+    }
+
+    @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
 
             for (Actor actor : this.actors) {
