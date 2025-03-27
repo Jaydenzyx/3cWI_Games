@@ -1,5 +1,6 @@
 package at.jayden.projects_games.Objects;
 
+import at.jayden.projects_games.Image.Rocket;
 import at.jayden.projects_games.firstgame.Rectangles;
 import org.newdawn.slick.*;
 import org.newdawn.slick.tests.AnimationTest;
@@ -35,6 +36,9 @@ public class Objects extends BasicGame {
             Ellipse ellipse = new Ellipse(random.nextInt(650),random.nextInt(600));
             this.actors.add(ellipse);
         }
+
+        Rocket rocket = new Rocket();
+        this.actors.add(rocket);
 
     }
 
