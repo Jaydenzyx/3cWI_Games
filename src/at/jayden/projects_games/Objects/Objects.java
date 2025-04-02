@@ -16,6 +16,7 @@ public class Objects extends BasicGame {
     }
 
     private List<Actor> actors;
+    private Rocket rocket;
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
@@ -38,6 +39,7 @@ public class Objects extends BasicGame {
         }
 
         Rocket rocket = new Rocket();
+        this.rocket = rocket;
         this.actors.add(rocket);
 
     }
@@ -48,14 +50,24 @@ public class Objects extends BasicGame {
     public void update(GameContainer gameContainer, int delta) throws SlickException {
 
         for (Actor actor : this.actors) {
-            actor.update(delta);
+            actor.update(gameContainer, delta);
         }
     }
 
     @Override
     public void keyPressed(int key, char c) {
-        System.out.println("pressed");
+        if(key == Input.KEY_ESCAPE){
+            System.exit(0);
+        }
+        if(key == Input.KEY_SPACE){
+            Cannonball cb = new Cannonball(this.rocket.getX()+44,this.rocket.getY());
+            this.actors.add(cb);
+        }
     }
+
+
+
+
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {

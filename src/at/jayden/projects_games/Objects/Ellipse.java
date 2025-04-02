@@ -1,5 +1,7 @@
 package at.jayden.projects_games.Objects;
 
+import org.newdawn.slick.Game;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 public class Ellipse implements Actor {
@@ -21,7 +23,7 @@ public Ellipse(float x, float y){
     }
 
     @Override
-    public void update(int delta) {
+    public void update(GameContainer gameContainer, int delta) {
 
     if (this.y > 600 && this.x > 600){
         this.y = 0;

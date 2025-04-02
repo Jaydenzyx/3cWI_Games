@@ -1,5 +1,6 @@
 package at.jayden.projects_games.Objects;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 import java.util.Random;
@@ -25,7 +26,7 @@ public class Circle implements Actor{
         graphics.drawOval(this.x,this.y,diameter,diameter);
     }
 
-    public void update(int delta){
+    public void update(GameContainer gameContainer, int delta){
 
         this.x += (float) (delta/this.speed);
         if(this.x > 600){

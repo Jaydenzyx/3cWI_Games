@@ -1,5 +1,6 @@
 package at.jayden.projects_games.Objects;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 public class Rectangle implements Actor{
@@ -20,7 +21,7 @@ public class Rectangle implements Actor{
         graphics.drawRect(this.x,this.y,100,100);
     }
 
-    public void update(int delta){
+    public void update(GameContainer gamecontainer, int delta){
 
         this.x += (float) (delta/this.speed);
         if(this.x > 600){

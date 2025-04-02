@@ -2,9 +2,7 @@ package at.jayden.projects_games.Image;
 
 import at.jayden.projects_games.Aufgabe1.Circles;
 import at.jayden.projects_games.Objects.Actor;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 
 public class Rocket implements Actor {
     private Image rocketImage;
@@ -24,7 +22,26 @@ public class Rocket implements Actor {
     }
 
     @Override
-    public void update(int delta) {
-        this.y --;
+    public void update(GameContainer gameContainer, int delta) {
+        if(gameContainer.getInput().isKeyDown(Input.KEY_RIGHT)){
+            this.x ++;
+        }
+        if (gameContainer.getInput().isKeyDown(Input.KEY_LEFT)){
+            this.x --;
+        }
+        if (gameContainer.getInput().isKeyDown(Input.KEY_UP)){
+            this.y --;
+        }
+        if (gameContainer.getInput().isKeyDown(Input.KEY_DOWN)){
+            this.y ++;
+        }
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
     }
 }
