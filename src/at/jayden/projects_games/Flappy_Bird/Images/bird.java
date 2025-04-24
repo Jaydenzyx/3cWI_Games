@@ -9,13 +9,13 @@ public class bird extends BasicGame {
     private float velocity;
     private float gravity = 0.001f;
     private boolean isJumping = false;
-    private int widht = 70;
+    private int width = 70;
     private int height = 70;
 
     public bird() throws SlickException {
         super("Flappy Bird");
         Image tmp = new Image("C:\\Users\\Acer\\OneDrive - HTL Dornbirn\\SWP_1\\Games\\src\\at\\jayden\\projects_games\\Flappy_Bird\\Images\\Bird.png");
-        this.Bird = tmp.getScaledCopy(widht, height);
+        this.Bird = tmp.getScaledCopy(width, height);
         this.y = 100;
         this.x = 100;
         this.velocity = 0.45f;
@@ -83,8 +83,8 @@ public class bird extends BasicGame {
         return Bird;
     }
 
-    public int getWidht() {
-        return widht;
+    public int getWidth() {
+        return width;
     }
 
     public int getHeight() {

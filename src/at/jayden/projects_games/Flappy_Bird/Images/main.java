@@ -10,6 +10,8 @@ public class main extends BasicGame {
     private List<pipe> pipes;
     private int pipespawntimer;
     private bird b;
+    private AngelCodeFont font;
+    private int Scoreboardcount = 0;
 
     public main(String title) {
         super(title);
@@ -21,34 +23,52 @@ public class main extends BasicGame {
         b = new bird();
         pipes = new ArrayList<>();
         pipespawntimer = 0;
+        font = new AngelCodeFont("testdata/demo2.fnt","testdata/demo2_00.tga");
     }
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
-        bg.update(gameContainer,delta);
+        bg.update(gameContainer, delta);
+
+        if (b.getY() < 0 || b.getY() > 600) {
+            System.out.println("Collision detected!");
+            gameContainer.exit();
+        }
 
 
         pipespawntimer += delta;
-        if(pipespawntimer >= 3000){
+        if (pipespawntimer >= 3000) {
             pipes.add(new pipe("."));
             pipespawntimer = 0;
         }
 
-        for(int i = 0; i < pipes.size(); i++){
+        for (int i = 0; i < pipes.size(); i++) {
             pipe p = pipes.get(i);
-            p.update(gameContainer,delta);
+            p.update(gameContainer, delta);
 
-            if(p.getX() < -100){
+            if (p.getX() < -100) {
                 pipes.remove(i);
                 i--;
             }
 
+            int upperPipeEndY = p.getHeight2() - p.getRandomnumbery2();
+            int lowerPipeStartY = p.getRandomnumbery();
+            int pad = 16;
+
+            boolean horiz = b.getX() + b.getWidth() - pad > p.getX() + pad
+                    && b.getX() + pad < p.getX() + p.getWidth1() - pad;
+            boolean hitTop = b.getY() + pad < upperPipeEndY;
+            boolean hitBottom = b.getY() + b.getHeight() - pad > lowerPipeStartY;
+
+            if (horiz && (hitTop || hitBottom)) {
+                gameContainer.exit();
+            }
+
+
         }
 
 
-
-
-        b.update(gameContainer,delta);
+        b.update(gameContainer, delta);
 
 
     }
@@ -61,6 +81,8 @@ public class main extends BasicGame {
     }
 
 
+
+
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
         bg.render(gameContainer, graphics);
@@ -68,6 +90,11 @@ public class main extends BasicGame {
             p.render(gameContainer, graphics);
         }
         b.render(gameContainer, graphics);
+
+
+        graphics.scale(0.75f, 0.75f);
+        font.drawString(875, 5, "Scoreboard:" + Scoreboardcount , Color.white);
+
     }
 
 

@@ -12,15 +12,19 @@ public class pipe extends BasicGame {
     private int height1 = 300;
     private int width2 = 100;
     private int height2 = 250;
+    private int pipegap;
 
     int miny2 = 30;
     int maxy2 = 70;
+
+
 
     Random random = new Random();
     int min = 350;
     int max = 400;
     int randomnumbery = random.nextInt((400-350)+1)+350;
     int randomnumbery2 = random.nextInt((maxy2-miny2)+1)+miny2;
+
 
     public pipe(String title) throws SlickException {
         super(".");
@@ -39,10 +43,9 @@ public class pipe extends BasicGame {
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
-        System.out.println(randomnumbery);
-        System.out.println(randomnumbery2);
         this.x -= 0.1f*delta;
 
+        pipegap = randomnumbery - randomnumbery2;
 
 
     }
@@ -85,4 +88,6 @@ public class pipe extends BasicGame {
     public int getHeight2() {
         return height2;
     }
+
+
 }
