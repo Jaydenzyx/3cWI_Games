@@ -89,5 +89,15 @@ public class pipe extends BasicGame {
         return height2;
     }
 
+    private boolean isScored = false;
+
+    public boolean isScored() {
+        return isScored;
+    }
+
+    public void setScored(boolean scored) {
+        this.isScored = scored;
+    }
+
 
 }

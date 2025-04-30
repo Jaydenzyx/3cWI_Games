@@ -12,6 +12,7 @@ public class main extends BasicGame {
     private bird b;
     private AngelCodeFont font;
     private int Scoreboardcount = 0;
+    private boolean isPaused = false;
 
     public main(String title) {
         super(title);
@@ -28,6 +29,11 @@ public class main extends BasicGame {
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
+        if(isPaused) {
+            font.drawString(600, 600, "You win!", Color.white);
+            return;
+        }
+
         bg.update(gameContainer, delta);
 
         if (b.getY() < 0 || b.getY() > 600) {
@@ -62,11 +68,21 @@ public class main extends BasicGame {
 
             if (horiz && (hitTop || hitBottom)) {
                 gameContainer.exit();
+                System.out.println("Collision detected!");
             }
 
 
+            boolean scoreboardhoriz = b.getX() > p.getX() + p.getWidth1();
+            if (scoreboardhoriz && !p.isScored()) {
+                Scoreboardcount++;
+                p.setScored(true);
+                System.out.println("Score: " + Scoreboardcount);
+            }
         }
 
+        if(Scoreboardcount == 2){
+            isPaused = true;
+        }
 
         b.update(gameContainer, delta);
 
