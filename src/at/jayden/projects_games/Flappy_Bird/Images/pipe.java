@@ -96,8 +96,6 @@ public class pipe extends BasicGame {
     }
 
     public void setScored(boolean scored) {
-        this.isScored = scored;
+        isScored = scored;
     }
-
-
 }

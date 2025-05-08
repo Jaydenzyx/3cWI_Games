@@ -30,7 +30,6 @@ public class main extends BasicGame {
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
         if(isPaused) {
-            font.drawString(600, 600, "You win!", Color.white);
             return;
         }
 
@@ -80,7 +79,7 @@ public class main extends BasicGame {
             }
         }
 
-        if(Scoreboardcount == 2){
+        if(Scoreboardcount == 100){
             isPaused = true;
         }
 
@@ -110,6 +109,11 @@ public class main extends BasicGame {
 
         graphics.scale(0.75f, 0.75f);
         font.drawString(875, 5, "Scoreboard:" + Scoreboardcount , Color.white);
+
+        if(Scoreboardcount == 100){
+            graphics.scale(1.5f, 1.5f);
+            font.drawString(285 , 200, "You win!", Color.white);
+        }
 
     }
 
