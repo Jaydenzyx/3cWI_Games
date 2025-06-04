@@ -1,7 +1,6 @@
 package at.jayden.projects_games.Tetris;
 
-import at.jayden.projects_games.Objects.Cannonball;
-import com.jcraft.jorbis.Block;
+
 import org.newdawn.slick.AngelCodeFont;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.Color;
@@ -18,6 +17,7 @@ public class main extends BasicGame {
     private T timage;
     private ZRight zrightimage;
     private Zleft zleftimage;
+    private block block;
 
     public main(String title) {
         super(title);
